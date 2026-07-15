@@ -26,3 +26,6 @@ const Recolte = sequelize.define("Recolte", {
   tableName: "recoltes",
   timestamps: true,
 });
+
+
+export default Recolte;

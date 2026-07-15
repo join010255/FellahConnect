@@ -28,3 +28,5 @@ const Parcelle = sequelize.define("Parcelle", {
   tableName: "parcelles",
   timestamps: true,
 });
+
+export default Parcelle;

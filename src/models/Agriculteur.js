@@ -36,3 +36,5 @@ const Agriculteur = sequelize.define("Agriculteur", {
   tableName: "agriculteurs",
   timestamps: true,
 });
+
+export default Agriculteur;
