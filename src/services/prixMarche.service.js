@@ -1,25 +1,25 @@
-import Marche from "../models/Marche.js ";
+import PrixMarche from "../models/PrixMarche.js";
 
-class MarcheControle{
+class PrixMarcheControle{
 
-    selectMarcheAll = async()=>{
-        const data = await Marche.findAll();
+    selectPrixAll = async()=>{
+        const data = await PrixMarche.findAll();
         if(data.length===0) return false;
         return data;
     }
 
-    addMarche = async(data)=>{
+    addPrix = async(data)=>{
         try{
-            await Marche.create(data);
+            await PrixMarche.create(data);
             return true;
         }catch(error){
             return false;
         }
     }
 
-    getMarcheById = async(id)=>{
+    getPrixById = async(id)=>{
         try{
-            const data = await Marche.findByPk(id);
+            const data = await PrixMarche.findByPk(id);
             if(!data) return false;
             return data;
         }catch(error){
@@ -27,9 +27,9 @@ class MarcheControle{
         }
     }
 
-    updateMarcheById = async(id,newData)=>{
+    updatePrixById = async(id,newData)=>{
         try{
-            const data = await Marche.findByPk(id);
+            const data = await PrixMarche.findByPk(id);
             if(!data) return false;
             await data.update(newData);
             return true;
@@ -38,9 +38,9 @@ class MarcheControle{
         }
     }
 
-    deleteMarcheById = async(id)=>{
+    deletePrixById = async(id)=>{
         try{
-            await Marche.destroy({
+            await PrixMarche.destroy({
                 where:{id}
             });
             return true;
@@ -51,4 +51,4 @@ class MarcheControle{
 
 }
 
-export default new MarcheControle();
+export default new PrixMarcheControle();

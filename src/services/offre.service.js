@@ -1,25 +1,25 @@
-import Marche from "../models/Marche.js ";
+import OffreVente from "../models/OffreVente.js";
 
-class MarcheControle{
+class OffreVenteControle{
 
-    selectMarcheAll = async()=>{
-        const data = await Marche.findAll();
+    selectOffreAll = async()=>{
+        const data = await OffreVente.findAll();
         if(data.length===0) return false;
         return data;
     }
 
-    addMarche = async(data)=>{
+    addOffre = async(data)=>{
         try{
-            await Marche.create(data);
+            await OffreVente.create(data);
             return true;
         }catch(error){
             return false;
         }
     }
 
-    getMarcheById = async(id)=>{
+    getOffreById = async(id)=>{
         try{
-            const data = await Marche.findByPk(id);
+            const data = await OffreVente.findByPk(id);
             if(!data) return false;
             return data;
         }catch(error){
@@ -27,9 +27,9 @@ class MarcheControle{
         }
     }
 
-    updateMarcheById = async(id,newData)=>{
+    updateOffreById = async(id,newData)=>{
         try{
-            const data = await Marche.findByPk(id);
+            const data = await OffreVente.findByPk(id);
             if(!data) return false;
             await data.update(newData);
             return true;
@@ -38,9 +38,9 @@ class MarcheControle{
         }
     }
 
-    deleteMarcheById = async(id)=>{
+    deleteOffreById = async(id)=>{
         try{
-            await Marche.destroy({
+            await OffreVente.destroy({
                 where:{id}
             });
             return true;
@@ -51,4 +51,4 @@ class MarcheControle{
 
 }
 
-export default new MarcheControle();
+export default new OffreVenteControle();

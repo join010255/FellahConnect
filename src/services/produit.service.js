@@ -1,6 +1,6 @@
 import Produit from "../models/Produit.js";
 
-class ProduitControle{
+class ProduitService{
     selectProdiutAll = async() => {
         const data = await Produit.findAll()
         if(data.length === 0) return false;
@@ -20,7 +20,7 @@ class ProduitControle{
         try{
             const data = await Produit.findByPk(id);
             if(!data) return false;
-            return true
+            return data
         }catch(error){
             return false
         }
@@ -28,10 +28,12 @@ class ProduitControle{
 
     deleteProduitById = async(id) => {
         try{
+            const dataCheck = await Produit.findByPk(id);
+            if(!dataCheck) return false
             await Produit.destroy({
                 where : {id: id}
             })
-            return 201;
+            return true;
         }catch(erorr){
             return false;
         }
@@ -44,9 +46,10 @@ class ProduitControle{
             await resultDataUpdates.update(newData)
             return true
         }catch(error){
+            console.log(error)
             return false
         }
-}
+    }
 }
 
-export default new ProduitControle();
+export default new ProduitService();

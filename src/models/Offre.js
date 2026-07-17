@@ -1,34 +1,35 @@
-const OffreVente = sequelize.define("OffreVente", {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  prix: {
-    type: DataTypes.FLOAT,
-    allowNull: false,
-  },
-  quantite: {
-    type: DataTypes.FLOAT,
-    allowNull: false,
-  },
-  statut: {
-    type: DataTypes.ENUM(
-      "en_attente",
-      "active",
-      "vendue",
-      "annulee"
-    ),
-    allowNull: false,
-    defaultValue: "active",
-  },
-  recolteId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-}, {
-  tableName: "offres_vente",
-  timestamps: true,
-});
+import sequelize from "../config/database";
+import { DataTypes } from "sequelize";
 
-export default OffreVente;
+const Recolte = sequelize.define(
+  "Recolte",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    quantite: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    dateRecolte: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    parcelleId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    produitId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+  },
+  {
+    tableName: "recoltes",
+    timestamps: true,
+  }
+);
+
+export default Recolte;

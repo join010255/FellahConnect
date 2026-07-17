@@ -1,25 +1,25 @@
-import Marche from "../models/Marche.js ";
+import Parcelle from "../models/Parcelle.js";
 
-class MarcheControle{
+class ParcelleControle{
 
-    selectMarcheAll = async()=>{
-        const data = await Marche.findAll();
+    selectParcelleAll = async()=>{
+        const data = await Parcelle.findAll();
         if(data.length===0) return false;
         return data;
     }
 
-    addMarche = async(data)=>{
+    addParcelle = async(data)=>{
         try{
-            await Marche.create(data);
+            await Parcelle.create(data);
             return true;
         }catch(error){
             return false;
         }
     }
 
-    getMarcheById = async(id)=>{
+    getParcelleById = async(id)=>{
         try{
-            const data = await Marche.findByPk(id);
+            const data = await Parcelle.findByPk(id);
             if(!data) return false;
             return data;
         }catch(error){
@@ -27,9 +27,9 @@ class MarcheControle{
         }
     }
 
-    updateMarcheById = async(id,newData)=>{
+    updateParcelleById = async(id,newData)=>{
         try{
-            const data = await Marche.findByPk(id);
+            const data = await Parcelle.findByPk(id);
             if(!data) return false;
             await data.update(newData);
             return true;
@@ -38,9 +38,9 @@ class MarcheControle{
         }
     }
 
-    deleteMarcheById = async(id)=>{
+    deleteParcelleById = async(id)=>{
         try{
-            await Marche.destroy({
+            await Parcelle.destroy({
                 where:{id}
             });
             return true;
@@ -51,4 +51,4 @@ class MarcheControle{
 
 }
 
-export default new MarcheControle();
+export default new ParcelleControle();

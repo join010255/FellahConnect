@@ -1,6 +1,4 @@
-import sequelize from "../config/database";
-import { DataTypes } from "sequelize";
-
+import Fournisseur from "./Fournisseur";
 
 const Produit = sequelize.define("Produit", {
   id: {
@@ -20,9 +18,11 @@ const Produit = sequelize.define("Produit", {
   categorie: {
     type: DataTypes.STRING,
   },
+  fournisseurId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
 }, {
   tableName: "produits",
   timestamps: true,
 });
-
-export default Produit;

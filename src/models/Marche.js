@@ -1,7 +1,7 @@
 import sequelize from "../config/database.js";
 import { DataTypes } from "sequelize";
 
-const Agriculteur = sequelize.define("Agriculteur", {
+const Marche = sequelize.define("Marche", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -13,15 +13,9 @@ const Agriculteur = sequelize.define("Agriculteur", {
     allowNull: false,
   },
 
-  prenom: {
+  ville: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-
-  telephone: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
   },
 
   region: {
@@ -29,19 +23,9 @@ const Agriculteur = sequelize.define("Agriculteur", {
     allowNull: false,
   },
 
-  commune: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-
-  userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-
 }, {
-  tableName: "agriculteurs",
+  tableName: "marches",
   timestamps: true,
 });
 
-export default Agriculteur;
+export default Marche;
