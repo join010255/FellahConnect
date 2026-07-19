@@ -12,8 +12,8 @@ class RecolteControle{
         }
     };
 
-    setData = async(res, req) => {
-        const result = await RecolteServes.addProduit();
+    setData = async(req, res) => {
+        const result = await RecolteServes.addProduit(req.body);
         if(!result) return res.status(500).json({message :  "server error"})
         res.status(201).json({message : "data is sets"})
     };

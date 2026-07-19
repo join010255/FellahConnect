@@ -12,8 +12,8 @@ class ProduitControle{
         }
     };
 
-    setData = async(res, req) => {
-        const result = await ProduitService.addProduit();
+    setData = async(req, res) => {
+        const result = await ProduitService.addProduit(req.body);
         if(!result) return res.status(500).json({message :  "server error"})
         res.status(201).json({message : "data is sets"})
     };

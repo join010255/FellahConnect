@@ -12,10 +12,10 @@ class OffreControle{
         }
     };
     // filx this
-    setData = async(res, req) => {
+    setData = async(req, res) => {
         const result = await OffreVenteServies.addProduit();
-        if(!result) return res.status(500).json({message :  "server error"})
-        res.status(201).json({message : "data is sets"})
+        if(!result) return req.status(500).json({message :  "server error"})
+        req.status(201).json({message : "data is sets"})
     };
     
     getById = async(res, req) => {

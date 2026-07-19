@@ -1,4 +1,5 @@
-import Fournisseur from "./Fournisseur";
+import sequelize from "../config/database";
+import { DataTypes } from "sequelize";
 
 const Produit = sequelize.define("Produit", {
   id: {
@@ -26,3 +27,5 @@ const Produit = sequelize.define("Produit", {
   tableName: "produits",
   timestamps: true,
 });
+
+export default Produit;

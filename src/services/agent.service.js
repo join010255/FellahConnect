@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import dotenv from "dotenv";
+import { tools } from "../tools/agent.tools.js"
 import systemPrompt from "../ai/systemPrompt.js"
 
 dotenv.config();
@@ -12,6 +13,7 @@ class AiAgentServes{
         try{
             const resp = await client.chat.completions.create({
                     module: "gpt-4.1-mini",
+                
                     message: [
                         {
                             role : "system",
@@ -21,10 +23,21 @@ class AiAgentServes{
                             role:  "user",
                             content: message
                         }
-                    ]
+                    ],
+                    tools : tools
+                    
             })
 
-            return resq.choices[0].message.content;
+            const result = resp.choices[0].message;
+
+            if(result.tool_calls){
+                for(let line of result.tool_calls){
+                    let argement = JSON.parse(line.function.arguments)
+                    const ress = toolFunctions[line.function.name](argement);
+                    return ress;
+                }
+            }
+            return result.content
         }catch(error){
             console.log(error);
             return false;
