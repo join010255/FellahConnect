@@ -1,9 +1,16 @@
 import Agriculteur from "../models/Agriculteur.js";
-
-class AgriculteurControle{
+import User from "../models/User.js"
+class AgriculteurServers{
 
     selectAgriculteurAll = async() =>{
-        const data = await Agriculteur.findAll();
+        const data = await Agriculteur.findAll({
+            include : [
+                {
+                    model : User,
+                    attributes : ["username"]
+                }
+            ]
+        });
         if(data.length === 0) return false;
         return data;
     }
@@ -51,4 +58,4 @@ class AgriculteurControle{
 
 }
 
-export default new AgriculteurControle();
+export default new AgriculteurServers();

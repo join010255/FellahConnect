@@ -1,7 +1,7 @@
 import ProduitService from "../services/produit.service.js"
 
 
-class ProduitService{
+class ProduitControle{
     getAll = async(req, res) => {
         try{
             const data = await ProduitService.selectProdiutAll();
@@ -37,5 +37,15 @@ class ProduitService{
         }
     };
 
-    up
-}     
+    update = async(req, res) => {
+        try{
+            const id = req.params.id;
+            const userData = await ProduitService.updateProduitById(id, req.body);
+            return res.status(userData.status).json({message : userData.message})
+        }catch(error){
+            return res.status(500).json({message : "Server Error"})
+        }
+    }
+}
+
+export default new ProduitControle();

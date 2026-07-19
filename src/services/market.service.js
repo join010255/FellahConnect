@@ -1,6 +1,6 @@
 import Marche from "../models/Marche.js ";
 
-class MarcheControle{
+class MarcheServres{
 
     selectMarcheAll = async()=>{
         const data = await Marche.findAll();
@@ -51,4 +51,4 @@ class MarcheControle{
 
 }
 
-export default new MarcheControle();
+export default new MarcheServres();

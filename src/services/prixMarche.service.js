@@ -1,6 +1,6 @@
 import PrixMarche from "../models/PrixMarche.js";
 
-class PrixMarcheControle{
+class PrixMarcheServes{
 
     selectPrixAll = async()=>{
         const data = await PrixMarche.findAll();
@@ -51,4 +51,4 @@ class PrixMarcheControle{
 
 }
 
-export default new PrixMarcheControle();
+export default new PrixMarcheServes();

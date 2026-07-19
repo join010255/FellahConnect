@@ -1,6 +1,6 @@
 import Recolte from "../models/Recolte.js";
 
-class RecolteControle{
+class RecolteServes{
 
     selectRecolteAll = async()=>{
         const data = await Recolte.findAll({
@@ -53,4 +53,4 @@ class RecolteControle{
 
 }
 
-export default new RecolteControle();
+export default new RecolteServes();

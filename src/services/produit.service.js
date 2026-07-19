@@ -44,10 +44,16 @@ class ProduitService{
             const resultDataUpdates = await Produit.findByPk(id);
             if(!resultDataUpdates) return false;
             await resultDataUpdates.update(newData)
-            return true
+            return {
+                status : 201,
+                message : "update sec"
+            }
         }catch(error){
             console.log(error)
-            return false
+            return {
+                status : 500,
+                message : "Server Erorr"
+            }
         }
     }
 }

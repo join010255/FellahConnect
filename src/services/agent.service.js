@@ -7,7 +7,7 @@ dotenv.config();
 const client = OpenAI({
     APIKey: process.env.OPEN_AI_API_KEY
 })
-class AiAgent{
+class AiAgentServes{
     chat = async(message) => {
         try{
             const resp = await client.chat.completions.create({
@@ -32,4 +32,4 @@ class AiAgent{
     }
 }
 
-export default new AiAgent();
+export default new AiAgentServes();

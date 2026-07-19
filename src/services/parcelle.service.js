@@ -1,6 +1,6 @@
 import Parcelle from "../models/Parcelle.js";
 
-class ParcelleControle{
+class ParcelleServes{
 
     selectParcelleAll = async()=>{
         const data = await Parcelle.findAll();
@@ -51,4 +51,4 @@ class ParcelleControle{
 
 }
 
-export default new ParcelleControle();
+export default new ParcelleServes();

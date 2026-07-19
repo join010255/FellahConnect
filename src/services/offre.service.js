@@ -1,6 +1,6 @@
 import OffreVente from "../models/OffreVente.js";
 
-class OffreVenteControle{
+class OffreVenteServies{
 
     selectOffreAll = async()=>{
         const data = await OffreVente.findAll();
@@ -51,4 +51,4 @@ class OffreVenteControle{
 
 }
 
-export default new OffreVenteControle();
+export default new OffreVenteServies();

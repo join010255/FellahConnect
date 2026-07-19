@@ -24,4 +24,4 @@ class BcryptMethode{
 }
     
 
-export default hashPassword;
+export default new BcryptMethode();

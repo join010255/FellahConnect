@@ -1,0 +1,51 @@
+import MarcheServres from "../services/market.service.js"
+
+
+class MarcheControle{
+    getAll = async(req, res) => {
+        try{
+            const data = await MarcheServres.selectProdiutAll();
+            if(!data) return res.status(404).json({message: "data not fond"})
+            res.status(201).json(data)
+        }catch(error){
+            return res.status(500).json({message : "server error"})
+        }
+    };
+
+    setData = async(req, res) => {
+        const result = await MarcheServres.addProduit(req.body);
+        if(!result) return res.status(500).json({message :  "server error"})
+        res.status(201).json({message : "data is sets"})
+    };
+    
+    getById = async(res, req) => {
+        const id = req.params.id;
+        const data = MarcheServres.getProduitById(id);
+        if(!data) return res.status(404).json({message : "data not fond"});
+        res.status(201).json(data)
+    };
+
+    delete = async(req, res) =>{
+        try{
+            const id = req.params.id;
+            const deleResult = await MarcheServres.deleteProduitById(id);
+            if(!deleResult) return res.status(401).json({message :  "delete is not "})
+            return res.status(201).json({message : `deleted ${id}`})
+        }catch(erorr){
+            console.log(erorr);
+            return res.status(500).json({message : "server error"})
+        }
+    };
+
+    update = async(req, res) => {
+        try{
+            const id = req.params.id;
+            const userData = await MarcheServres.updateProduitById(id, req.body);
+            return res.status(userData.status).json({message : userData.message})
+        }catch(error){
+            return res.status(500).json({message : "Server Error"})
+        }
+    }
+}
+
+export default new MarcheControle();
