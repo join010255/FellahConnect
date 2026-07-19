@@ -1,6 +1,6 @@
 import express from "express";
 
-import authRoutes from "./auth.routes.js";
+import routesUser from "./user.routes.js";
 import agriculteurRoutes from "./agriculteur.routes.js";
 import parcelleRoutes from "./parcelle.routes.js";
 import produitRoutes from "./produit.routes.js";
@@ -12,7 +12,7 @@ import agentRoutes from "./agent.routes.js";
 
 const allRouter = express.Router();
 
-allRouter.use("/auth", authRoutes);
+allRouter.use("/auth", routesUser);
 allRouter.use("/agriculteurs", agriculteurRoutes);
 allRouter.use("/parcelles", parcelleRoutes);
 allRouter.use("/produits", produitRoutes);
